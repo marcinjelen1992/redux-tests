@@ -1,14 +1,21 @@
 import React from 'react';
 import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+// import { Counter } from './features/counter/Counter';
 import './App.css';
+import { ReduxTest } from './components/ReduxTest';
+import { ReduxCounter } from './components/ReduxCounter';
+import { useSelector } from 'react-redux';
+import { getInitalCounterValue } from './redux/counterReduxSlice/selectors';
 
 function App() {
+
+  const counterConst = useSelector((state) => getInitalCounterValue(state))
   return (
     <div className="App">
+      <ReduxTest />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
+        {/* <Counter /> */}
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -50,6 +57,8 @@ function App() {
             React Redux
           </a>
         </span>
+        <div><ReduxCounter /></div>
+        <div>{useSelector((state) => getInitalCounterValue(state))}</div>
       </header>
     </div>
   );
